@@ -2,10 +2,8 @@ let web3;
 let contract;
 let accounts;
 
-const contractAddress = "ČIA_PASTATYK_DEPLOYED_ADDRESS"; // po deploy Remix
-const contractABI = [
-  /* čia įklijuok ABI iš CarRental.json */
-];
+const contractAddress = "0xd9145CCE52D386f254917e481eB44e9943F39138"; // po deploy Remix
+const contractABI = [];
 
 window.addEventListener("load", async () => {
   if (window.ethereum) {
