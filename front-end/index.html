@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Car Rental DApp</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+  </head>
+  <body>
+    <h1>Car Rental DApp</h1>
+
+    <div>
+      <h2>Add Car (Owner)</h2>
+      Model: <input type="text" id="carModel" /> Price per day:
+      <input type="number" id="carPrice" />
+      <button onclick="addCar()">Add Car</button>
+    </div>
+
+    <div>
+      <h2>Reserve Car (Renter)</h2>
+      Car ID: <input type="number" id="reserveCarId" /> Deposit & Price:
+      <input type="number" id="deposit" />
+      <button onclick="reserveCar()">Reserve</button>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
