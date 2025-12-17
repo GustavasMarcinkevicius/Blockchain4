@@ -496,7 +496,7 @@ async function displayActiveRentals() {
                 )}...${rental.renter.substring(38)}</p>
                 <p>Status: <span class="badge ${statusClass}">${statusText}</span></p>
                 <div class="rental-actions">
-                    <button onclick="copyRentalId(${rentalId})" class="btn-small">Use ID</button>
+                    <button onclick="copyRentalId(${rentalId})" class="btn-primary">Use ID</button>
                 </div>
                 <hr>
             </div>
