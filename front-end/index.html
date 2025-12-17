@@ -1,27 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
-    <title>Car Rental DApp</title>
-    <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+    <title>CarRental – Login</title>
+    <link rel="stylesheet" href="index-style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/ethers@6.14.0/dist/ethers.umd.min.js"></script>
   </head>
   <body>
-    <h1>Car Rental DApp</h1>
-
-    <div>
-      <h2>Add Car (Owner)</h2>
-      Model: <input type="text" id="carModel" /> Price per day:
-      <input type="number" id="carPrice" />
-      <button onclick="addCar()">Add Car</button>
+<div class="login-square">
+    <div class="logo-container">
+        <span class="fox-icon">🦊</span>
+        <h1>CarRental</h1>
     </div>
 
-    <div>
-      <h2>Reserve Car (Renter)</h2>
-      Car ID: <input type="number" id="reserveCarId" /> Deposit & Price:
-      <input type="number" id="deposit" />
-      <button onclick="reserveCar()">Reserve</button>
-    </div>
+    <button id="connectBtn" class="glow-button">
+        CONNECT WALLET
+    </button>
+    
+    <p id="status">Status: <span>Not connected</span></p>
+</div>  
 
-    <script src="app.js"></script>
+      <script src="login.js"></script>
+    </div>
   </body>
 </html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>CarRental DApp</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/ethers@6.14.0/dist/ethers.umd.min.js"></script>
+  </head>
+  <body>
+    <div class="app-container">
+      <header class="virsus">
+        <div class="logo">CarRental <span>DApp</span></div>
+        <div class="wallet-box">
+          <span class="dot"></span>
+          <span id="account">Connecting...</span>
+        </div>
+      </header>
+
+      <div class="actions-layout">
+        <div class="glass-card">
+          <h3>Manage Fleet</h3>
+          <p class="subtitle">Add a new car to the smart contract</p>
+          <input id="model" placeholder="Car Model (e.g. BMW M4)" />
+          <input id="price" placeholder="Price per day (wei)" />
+          <button onclick="addCar()" class="btn-primary">LIST CAR</button>
+        </div>
+
+        <div class="glass-card">
+          <h3>Rent a Car</h3>
+          <p class="subtitle">Enter ID and safety deposit</p>
+          <input id="carId" placeholder="Car ID" />
+          <input id="deposit" placeholder="Deposit (wei)" />
+          <button onclick="reserve()" class="btn-primary cyan">RESERVE</button>
+
+          <div class="mini-grid">
+            <input id="startId" placeholder="Rental ID" />
+            <button onclick="startRental()" class="btn-outline">START</button>
+            <input id="endId" placeholder="Rental ID" />
+            <button onclick="endRental()" class="btn-outline">END</button>
+          </div>
+        </div>
+
+        <div class="glass-card">
+          <h3>Inspection</h3>
+          <p class="subtitle">Pre/Post rental damage check</p>
+          <input id="inspectId" placeholder="Rental ID" />
+          <select id="damageStatus">
+            <option value="false">No damage</option>
+            <option value="true">Damage found</option>
+          </select>
+          <div class="mini-grid">
+            <button onclick="preInspect()" class="btn-outline">
+              PRE-CHECK
+            </button>
+            <button onclick="postInspect()" class="btn-outline">
+              POST-CHECK
+            </button>
+          </div>
+        </div>
+
+        <div class="glass-card">
+          <h3>Payments</h3>
+          <p class="subtitle">Finalize your rental dues</p>
+          <input id="payId" placeholder="Rental ID" />
+          <input id="payAmount" placeholder="Amount (wei)" />
+          <button onclick="payDue()" class="btn-primary gold">PAY NOW</button>
+        </div>
+      </div>
+      <section class="section-area">
+        <h2 class="section-title">Available Fleet</h2>
+        <div id="carsGrid" class="cars-grid"></div>
+      </section>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
