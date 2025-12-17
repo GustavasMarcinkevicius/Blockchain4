@@ -29,7 +29,7 @@ Išmanioji sutartis veikia kaip tarpininkas, kuris kontroliuoja pinigų srautus 
 ###  Sekų diagrama vaizduoja pagrindinę nuomos proceso logiką tarp Nuomininko, Nuomotojo, Mechaniko ir Išmaniosios sutarties:
 
 ### Rezervacija
-- Nuomininkas rezervuoja automobilį ir sumoka depozitą bei nuomos mokestį. Smart contract išsiunčia ReservationCreated event’ą nuomininkui ir praneša nuomotojui (ReservationNotification).
+- Nuomininkas rezervuoja automobilį ir sumoka depozitą. Smart contract išsiunčia ReservationCreated event’ą nuomininkui ir praneša nuomotojui (ReservationNotification).
 
 ### Nuomos patvirtinimas ir priešnuomos inspekcija
 - Nuomotojas patvirtina rezervaciją (ReservationConfirmed). Mechanikas atlieka priešnuomos patikrą (preInspect). Smart contract siunčia atitinkamus event’us visiems dalyviams (PreInspectionCompleted).
@@ -37,14 +37,10 @@ Išmanioji sutartis veikia kaip tarpininkas, kuris kontroliuoja pinigų srautus 
 ### Nuomos ciklas
 - Nuomininkas pradeda nuomą (startRental) ir ją užbaigia (endRental). Smart contract praneša apie nuomos pradžią ir pabaigą (RentalStarted, RentalEnded).
 
-### Post-inspekcija ir depozito grąžinimas
-- Mechanikas tikrina automobilį po nuomos (postInspect). Jei nėra žalos, Smart contract grąžina depozitą nuomininkui (DepositRefunded) ir pažymi nuomą kaip užbaigtą (RentalCompleted).
+### Post-inspekcija
+- Mechanikas tikrina automobilį po nuomos (postInspect). Jei nėra žalos, Smart contract depozitą naudoja sąskaitai apmokėti ir pažymi nuomą kaip užbaigtą (RentalCompleted).
 
-![Untitled diagram-2025-12-09-111012](https://github.com/user-attachments/assets/f7bf5e66-78d2-4786-bfd0-a858df3303be)
-
-
-
-
+![Car Rental Escrow-2025-12-17-124340](https://github.com/user-attachments/assets/de120eda-7153-4296-986d-75753dd00f7a)
 
 ## Tipiniai scenarijai
 ### 1. Standartinė nuoma be jokių problemų
@@ -59,9 +55,9 @@ Išmanioji sutartis veikia kaip tarpininkas, kuris kontroliuoja pinigų srautus 
 
 - Mechanikas tikrina automobilį po nuomos – nėra žalos.
 
-- Smart contract grąžina depozitą nuomininkui ir pažymi nuomą kaip užbaigtą.
+- Smart contract pažymi nuomą kaip užbaigtą.
 
-- Rezultatas: procesas vyksta sklandžiai, depozitas grąžinamas, visi patenkinti.
+- Rezultatas: procesas vyksta sklandžiai, visi patenkinti.
 
 
 ### 2. Nuomos pabaigoje randama žala
@@ -90,3 +86,49 @@ Išmanioji sutartis veikia kaip tarpininkas, kuris kontroliuoja pinigų srautus 
 - jei žala patvirtinta → depozitas pasilieka nuomotojui, kad padengtų nuostolius.
 
 - Rezultatas: ginčas išsprendžiamas skaidriai ir automatiškai, užtikrinant teisingumą abiem pusėms.
+
+
+
+
+
+
+
+Kontrakto deployinimias
+
+<img width="1385" height="821" alt="image" src="https://github.com/user-attachments/assets/38e9d4b7-42da-4387-873a-8220b4e9034e" />
+
+Front-end:
+
+<img width="1912" height="959" alt="image" src="https://github.com/user-attachments/assets/3b8ab545-9735-4d65-949b-a6d958361de5" />
+<img width="1911" height="840" alt="image" src="https://github.com/user-attachments/assets/64e4813b-bf3a-4963-aa7d-d19798f91d7f" />
+<img width="1919" height="951" alt="image" src="https://github.com/user-attachments/assets/d51241b8-ee0e-480b-af5b-cc6771beff28" />
+
+
+Automobilio pridėjimas:
+
+<img width="393" height="577" alt="image" src="https://github.com/user-attachments/assets/6f7bcbeb-dd3f-4ae7-a74c-4b7dc63c02fa" />
+<img width="471" height="755" alt="image" src="https://github.com/user-attachments/assets/f7dd2111-77f4-43a1-8a6a-3001548ec796" />
+
+
+Automobilio patikra:
+
+Jeigu bando patikrinti ne paskirtas mechanikas:
+
+<img width="1918" height="914" alt="image" src="https://github.com/user-attachments/assets/3935a8bb-6a08-4bc1-bab8-df1332b9de0f" />
+Kai bando atlikti mechanikas:
+
+<img width="964" height="800" alt="image" src="https://github.com/user-attachments/assets/efc4e340-d905-4200-b635-86aaeed44690" />
+Toliau galima tęsti nuomą:
+
+<img width="1908" height="957" alt="image" src="https://github.com/user-attachments/assets/5f534b38-7720-46b0-b583-ccd4cebc091b" />
+
+
+
+Etherscan pavyzdys:
+<img width="1704" height="831" alt="image" src="https://github.com/user-attachments/assets/17f3350e-a9c2-440d-9e99-53dc1840c453" />
+
+
+
+Galimas testavimas naudojant RemixIDE tiek lokaliai, tiek tinkle (priklauso nuo environment):
+<img width="424" height="828" alt="image" src="https://github.com/user-attachments/assets/f85784f4-5ec5-4499-9068-84be46d209d2" />
+
