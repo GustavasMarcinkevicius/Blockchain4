@@ -4,7 +4,7 @@ if (!sessionStorage.getItem("connected")) {
 
 let provider, signer, contract;
 
-const contractAddress = "0xbEF58DD1B2ade3Cd96d83Fc050233d10A1dc7f66";
+const contractAddress = "0x7ee6c4E8c6f1F0a52d112BF3d8cB5551dA2F1343";
 const abi = [
   {
     inputs: [
@@ -16,159 +16,6 @@ const abi = [
     ],
     stateMutability: "nonpayable",
     type: "constructor",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "rentalId",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "renter",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256",
-      },
-    ],
-    name: "DepositRefunded",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "rentalId",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "totalPaid",
-        type: "uint256",
-      },
-    ],
-    name: "PaymentCompleted",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "rentalId",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "amountDue",
-        type: "uint256",
-      },
-    ],
-    name: "PaymentDue",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "rentalId",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "bool",
-        name: "damageFound",
-        type: "bool",
-      },
-    ],
-    name: "PostInspectionCompleted",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "rentalId",
-        type: "uint256",
-      },
-    ],
-    name: "PreInspectionCompleted",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "rentalId",
-        type: "uint256",
-      },
-    ],
-    name: "RentalEnded",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "rentalId",
-        type: "uint256",
-      },
-    ],
-    name: "RentalStarted",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "rentalId",
-        type: "uint256",
-      },
-    ],
-    name: "ReservationConfirmed",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "rentalId",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "renter",
-        type: "address",
-      },
-    ],
-    name: "ReservationCreated",
-    type: "event",
   },
   {
     inputs: [
@@ -230,19 +77,6 @@ const abi = [
         type: "uint256",
       },
     ],
-    name: "confirmReservation",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "_rentalId",
-        type: "uint256",
-      },
-    ],
     name: "endRental",
     outputs: [],
     stateMutability: "nonpayable",
@@ -252,7 +86,7 @@ const abi = [
     inputs: [
       {
         internalType: "uint256",
-        name: "_carId",
+        name: "_id",
         type: "uint256",
       },
     ],
@@ -285,93 +119,6 @@ const abi = [
   {
     inputs: [],
     name: "getCarsCount",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "_rentalId",
-        type: "uint256",
-      },
-    ],
-    name: "getRental",
-    outputs: [
-      {
-        internalType: "address",
-        name: "renter",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "carId",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "deposit",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "startTime",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "endTime",
-        type: "uint256",
-      },
-      {
-        internalType: "bool",
-        name: "preInspected",
-        type: "bool",
-      },
-      {
-        internalType: "bool",
-        name: "postInspected",
-        type: "bool",
-      },
-      {
-        internalType: "bool",
-        name: "preDamageFound",
-        type: "bool",
-      },
-      {
-        internalType: "bool",
-        name: "postDamageFound",
-        type: "bool",
-      },
-      {
-        internalType: "bool",
-        name: "completed",
-        type: "bool",
-      },
-      {
-        internalType: "uint256",
-        name: "due",
-        type: "uint256",
-      },
-      {
-        internalType: "bool",
-        name: "awaitingPayment",
-        type: "bool",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "getRentalsCount",
     outputs: [
       {
         internalType: "uint256",
@@ -504,28 +251,18 @@ const abi = [
       },
       {
         internalType: "bool",
-        name: "preDamageFound",
-        type: "bool",
-      },
-      {
-        internalType: "bool",
-        name: "postDamageFound",
-        type: "bool",
-      },
-      {
-        internalType: "bool",
         name: "completed",
-        type: "bool",
-      },
-      {
-        internalType: "bool",
-        name: "awaitingPayment",
         type: "bool",
       },
       {
         internalType: "uint256",
         name: "due",
         type: "uint256",
+      },
+      {
+        internalType: "bool",
+        name: "awaitingPayment",
+        type: "bool",
       },
     ],
     stateMutability: "view",
@@ -562,90 +299,246 @@ const abi = [
 init();
 
 async function init() {
-  provider = new ethers.BrowserProvider(window.ethereum);
-  signer = await provider.getSigner();
-  const address = await signer.getAddress();
+  try {
+    provider = new ethers.BrowserProvider(window.ethereum);
+    signer = await provider.getSigner();
+    const address = await signer.getAddress();
 
-  contract = new ethers.Contract(contractAddress, abi, signer);
-  document.getElementById("account").innerText = address;
+    contract = new ethers.Contract(contractAddress, abi, signer);
+    document.getElementById("account").innerText =
+      address.substring(0, 6) + "..." + address.substring(38);
 
-  await displayCars();
+    await displayCars();
+    await displayActiveRentals();
+  } catch (err) {
+    console.error(err);
+  }
 }
 
-/* -------- FUNCTIONS -------- */
+function selectCar(id, priceEth) {
+  document.getElementById("carId").value = id;
+  document.getElementById("deposit").value = priceEth;
+}
+
+async function displayCars() {
+  const grid = document.getElementById("carsGrid");
+  if (!grid) return;
+  grid.innerHTML = "";
+
+  try {
+    const count = await contract.getCarsCount();
+    for (let i = 0; i < count; i++) {
+      const car = await contract.getCar(i);
+      const card = document.createElement("div");
+      card.className = "car-card";
+
+      const displayPrice = car[1].toString();
+
+      card.innerHTML = `
+    <div>
+        <h4>${car[0]} <small>(ID: ${i})</small></h4>
+        <p class="price">${displayPrice} wei / Day</p>
+        <p class="status ${car[3] ? "free" : "busy"}">
+            ● ${car[3] ? "Available" : "Rented"}
+        </p>
+    </div>
+    ${
+      car[3]
+        ? `<button onclick="selectCar(${i}, '${displayPrice}')" class="btn-outline">Select</button>`
+        : ""
+    }
+`;
+      grid.appendChild(card);
+    }
+  } catch (err) {
+    console.error("Klaida atvaizduojant automobilius:", err);
+  }
+}
 
 async function addCar() {
-  const model = modelInput().value;
-  const price = priceInput().value;
-  await (await contract.addCar(model, price)).wait();
+  const model = document.getElementById("model").value;
+  const price = document.getElementById("price").value;
+
+  const tx = await contract.addCar(model, price);
+  await tx.wait();
   window.location.reload();
 }
 
 async function reserve() {
-  await (
-    await contract.reserveCar(carId().value, { value: deposit().value })
-  ).wait();
-}
+  const id = document.getElementById("carId").value;
+  const car = await contract.getCar(id);
+  const pricePerDay = car[1];
 
-async function preInspect() {
-  await (
-    await contract.preInspect(preId().value, preDamage().value === "true")
-  ).wait();
+  const autoDeposit = pricePerDay * 2n;
+
+  const tx = await contract.reserveCar(id, { value: autoDeposit });
+  await tx.wait();
+  window.location.reload();
 }
 
 async function startRental() {
-  await (await contract.startRental(startId().value)).wait();
+  const id = document.getElementById("startId").value;
+  const tx = await contract.startRental(id);
+  await tx.wait();
+  window.location.reload();
 }
 
 async function endRental() {
-  await (await contract.endRental(endId().value)).wait();
+  const id = document.getElementById("endId").value;
+  const tx = await contract.endRental(id);
+  await tx.wait();
+  window.location.reload();
 }
 
-async function postInspect() {
-  await (
-    await contract.postInspect(postId().value, postDamage().value === "true")
-  ).wait();
-}
+async function preInspect() {
+  const id = document.getElementById("inspectId").value;
+  const damage = document.getElementById("damageStatus").value === "true";
 
-async function payDue() {
-  await (
-    await contract.payDue(payId().value, { value: payAmount().value })
-  ).wait();
-}
-async function displayCars() {
-  const grid = document.getElementById("carsGrid");
-  grid.innerHTML = "";
+  try {
+    const tx = await contract.preInspect(id, damage);
+    console.log("Transaction sent:", tx.hash);
 
-  const count = await contract.getCarsCount();
+    await tx.wait();
+    alert("Inspection successfully submitted!");
+    window.location.reload();
+  } catch (err) {
+    console.error("Error details:", err);
 
-  for (let i = 0; i < count; i++) {
-    const car = await contract.getCar(i);
-
-    const card = document.createElement("div");
-    card.className = "car-card";
-    card.innerHTML = `
-            <h4>ID: ${i} | ${car[0]}</h4>
-            <p style="color: #00d4ff; font-weight: bold;">${
-              car[1]
-            } WEI / Day</p>
-            <p style="color: ${car[3] ? "#00ff88" : "#ff4444"}">
-                ${car[3] ? "● Available" : "● Rented"}
-            </p>
-        `;
-    grid.appendChild(card);
+    if (err.message.includes("execution reverted")) {
+      alert(
+        "Access Denied: Only the authorized mechanic can perform inspections."
+      );
+    } else if (err.code === "ACTION_REJECTED") {
+      alert("Transaction cancelled by user.");
+    } else {
+      alert("An error occurred: " + (err.reason || "Internal Contract Error"));
+    }
   }
 }
 
-/* -------- SHORTCUTS -------- */
-const preId = () => document.getElementById("inspectId");
-const preDamage = () => document.getElementById("damageStatus");
-const postId = () => document.getElementById("inspectId");
-const modelInput = () => document.getElementById("model");
-const priceInput = () => document.getElementById("price");
-const carId = () => document.getElementById("carId");
-const deposit = () => document.getElementById("deposit");
-const startId = () => document.getElementById("startId");
-const endId = () => document.getElementById("endId");
-const postDamage = () => document.getElementById("postDamage");
-const payId = () => document.getElementById("payId");
-const payAmount = () => document.getElementById("payAmount");
+async function postInspect() {
+  const id = document.getElementById("inspectId").value;
+  const damage = document.getElementById("damageStatus").value === "true";
+
+  try {
+    const tx = await contract.postInspect(id, damage);
+    console.log("Post-inspection transaction sent:", tx.hash);
+
+    await tx.wait();
+    alert("Post-rental inspection completed successfully!");
+    window.location.reload();
+  } catch (err) {
+    console.error("Post-inspection error:", err);
+
+    if (err.message.includes("execution reverted")) {
+      alert(
+        "Access Denied: You must be the authorized mechanic to submit post-inspection reports."
+      );
+    } else if (err.code === "ACTION_REJECTED") {
+      alert("Transaction cancelled by user.");
+    } else {
+      alert(
+        "Error: " +
+          (err.reason ||
+            "The inspection could not be processed. Please check the Rental ID.")
+      );
+    }
+  }
+}
+async function displayActiveRentals() {
+  const list = document.getElementById("rentalsList");
+  if (!list) return;
+  list.innerHTML = "Loading rentals...";
+
+  try {
+    let rentalId = 0;
+    let html = "";
+    let activeFound = false;
+
+    while (rentalId < 100) {
+      try {
+        const rental = await contract.rentals(rentalId);
+
+        if (rental.renter === "0x0000000000000000000000000000000000000000")
+          break;
+
+        if (!rental.completed) {
+          activeFound = true;
+          const car = await contract.getCar(rental.carId);
+
+          let statusText = "";
+          let statusClass = "";
+
+          if (rental.postInspected) {
+            statusText = "Ready for Payment";
+            statusClass = "status-pay";
+          } else if (rental.endTime > 0) {
+            statusText = "Returned (Awaiting Post-Inspection)";
+            statusClass = "status-inspect";
+          } else if (rental.startTime > 0) {
+            statusText = "Currently Rented";
+            statusClass = "status-active";
+          } else if (rental.preInspected) {
+            statusText = "Inspected (Ready to Start)";
+            statusClass = "status-ready";
+          } else {
+            statusText = "Reserved (Awaiting Pre-Inspection)";
+            statusClass = "status-pending";
+          }
+
+          html += `
+            <div class="rental-card">
+                <p><strong>Rental ID: #${rentalId}</strong></p>
+                <p>Car: ${car[0]} (ID: ${rental.carId})</p>
+                <p>Renter: ${rental.renter.substring(
+                  0,
+                  6
+                )}...${rental.renter.substring(38)}</p>
+                <p>Status: <span class="badge ${statusClass}">${statusText}</span></p>
+                <div class="rental-actions">
+                    <button onclick="copyRentalId(${rentalId})" class="btn-small">Use ID</button>
+                </div>
+                <hr>
+            </div>
+          `;
+        }
+        rentalId++;
+      } catch (e) {
+        break;
+      }
+    }
+
+    list.innerHTML = activeFound ? html : "<p>No active rentals found.</p>";
+  } catch (err) {
+    console.error("Error fetching rentals:", err);
+    list.innerHTML = "Error loading rentals.";
+  }
+}
+
+function copyRentalId(id) {
+  const fields = ["inspectId", "payId", "startRentalId", "endRentalId"];
+  fields.forEach((fieldId) => {
+    const el = document.getElementById(fieldId);
+    if (el) el.value = id;
+  });
+  alert("Rental ID #" + id + " selected!");
+}
+
+async function payDue() {
+  const id = document.getElementById("payId").value;
+  try {
+    const rental = await contract.rentals(id);
+    const amountToPay = rental.due;
+
+    if (amountToPay === 0n) {
+      alert("No debt found.");
+      return;
+    }
+
+    const tx = await contract.payDue(id, { value: amountToPay });
+    await tx.wait();
+    window.location.reload();
+  } catch (err) {
+    console.error(err);
+  }
+}

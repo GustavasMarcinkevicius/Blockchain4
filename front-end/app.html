@@ -70,10 +70,28 @@
           <button onclick="payDue()" class="btn-primary gold">PAY NOW</button>
         </div>
       </div>
+
+      <section id="activeRentalsSection">
+        <h2>Active Rentals</h2>
+        <div id="rentalsList" class="rentals-grid"></div>
+      </section>
+
       <section class="section-area">
         <h2 class="section-title">Available Fleet</h2>
         <div id="carsGrid" class="cars-grid"></div>
       </section>
+      <div class="glass-card">
+        <h3>Payments</h3>
+        <p class="subtitle">Finalize your rental dues</p>
+        <input type="number" id="payId" placeholder="Rental ID" />
+        <button onclick="payDue()" class="btn-primary gold">PAY NOW</button>
+        <p>
+          <small
+            >*The amount will be calculated automatically based on your rental
+            duration.</small
+          >
+        </p>
+      </div>
     </div>
     <script src="app.js"></script>
   </body>
